@@ -1,0 +1,10 @@
+n=[-10:10];u=stepseq(0,-10,10);
+[x,n]=sigshift(u,n,-2);
+x= -2.^(n-1).*x;
+h1=2.*impseq(-1,-10,10)+ impseq(0,-10,10)-impseq(1,-10,10)+3.*impseq(2,-10,10);
+h2=-impseq(-2,-10,10)+ 3.*impseq(-1,-10,10)+ impseq(0,-10,10)+ 2.*impseq(1,-10,10);
+h3=2.*impseq(0,-10,10)-2.*impseq(1,-10,10)+3.*impseq(2,-10,10)+impseq(3,-10,10);
+[h23,nh23]=sigadd(h2,n,h3,n);
+[hn,n]=conv_m(h1,n,h23,n);
+[yn,n]=conv_m(x,n,hn,n);
+subplot(2,1,1);stem(n,yn);title('dau ra');
