@@ -1,0 +1,12 @@
+x = linspace(1,2*pi); y1 = sin(x); y2 = cos(x);
+y3 = 2.*exp(-x).*sin(x);
+x1 = linspace(-2*pi,2*pi);
+y4 = sinc(x1);
+subplot(221);plot(x,y1);
+title('Ham y = sinx');
+subplot(222);plot(x,y2);
+title('Ham y = cosx');
+subplot(223);plot(x,y3);
+title('Ham y = 2e^{-x}sinx');
+subplot(224);plot(x,y4);
+title('Ham y = $${sin\pi x\over\pi x}$$','interpreter','latex');

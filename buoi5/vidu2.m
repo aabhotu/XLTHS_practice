@@ -1,0 +1,15 @@
+Wp = 2*1000/4000;
+Ws = 2*1500/4000;
+Rp = 0.5;
+Rs = 40;
+[N,Wn] = cheb1ord(Wp,Ws,Rp,Rs);
+[b,a] = cheby1(N,0.5,Wp);
+[h,omega] = freqz(b,a,256);
+y = 20*log10(abs(h));
+subplot(211);
+plot(omega/pi,y); grid on;
+xlabel('\omega/\pi');
+ylabel('Bien do, dB');
+title('Mach loc LP Chebyshev 1');
+subplot(212);
+zplane(b,a);

@@ -1,0 +1,16 @@
+Rp = 0.5;
+Rs = 40;
+Wp = 2*1000/4000;
+Ws = 2*1500/4000;
+[N,Wn] = buttord(Wp,Ws,Rp,Rs);
+[b,a] = butter(N,Wn);
+[h,omega] = freqz(b,a,256);
+y = 20*log(abs(h));
+subplot(2,1,1);
+plot(omega/pi,y); grid on;
+xlabel('\omega/\pi');
+ylabel('Bien do,dB');
+title('Mach loc Lp Butterworth');
+subplot(212);
+zplane(b,a);
+[z,p,k] = butter(N,Wn);
